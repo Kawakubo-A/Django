@@ -4,19 +4,16 @@ from django.http import HttpResponse
 # Create your views here.
 #http://localhost:8000/hellow/my_name_is_taro-yamada.I_am_39_years_old.
 def index(request):
-    params={
+    params = {
         'title':'Hello/Index',
-        'msg':'これはサンプルです',
-        'goto':'next',
+        'msg':'お名前は？',
     }
-    # result = "Your age:"+str(age)+" , name:"+nickname
-    # return HttpResponse(result)
-    return render(request, 'hellow/index.html',params)
+    return render(request, 'hellow/index.html', params)
 
-def next(request):
-    params={
-        'title':'Hello/Next',
-        'msg':'これはサンプルです',
-        'goto':'index',
+def form(request):
+    msg = request.POST['msg']
+    params = {
+        'title':'Hello/Form',
+        'msg':'こんにちは、' + msg + 'さん。',
     }
-    return render(request, 'hellow/index.html',params)
+    return render(request, 'hellow/index.html', params)
